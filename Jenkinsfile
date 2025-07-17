@@ -5,7 +5,7 @@ pipeline{
     stage("build"){
        when {
          expressio {
-           BRANCH_NAME == 'master' && CODE_CHANGES == true
+           BRANCH_NAME == 'main' && CODE_CHANGES == true
          }
        }
       steps{
