@@ -1,12 +1,23 @@
+CODE_CHANGES = getGitChanges()
 pipeline{
   agent any
   stages{
     stage("build"){
-        steps{
+       when {
+         expressio {
+           BRANCH_NAME == 'master' && CODE_CHANGES == true
+         }
+       }
+      steps{
             echo 'building the application...'
         }
     }  
 stage("test"){
+   when {
+         expressio {
+           BRANCH_NAME == 'devlopment' 
+         }
+       }
         steps{
             echo 'testing the application...'
         }
